@@ -1,3 +1,6 @@
+### Notice
+For the modification made to this project as part of the Internship test task, please refer to the [explanation](EXPLANATION.md) file.
+
 ### About Fernflower
 
 Fernflower is the first actually working analytical decompiler for Java and 

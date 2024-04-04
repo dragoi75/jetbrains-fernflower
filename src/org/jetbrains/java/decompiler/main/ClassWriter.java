@@ -267,6 +267,10 @@ public class ClassWriter {
         }
       }
 
+      if(cl.getRecordComponents() != null && DecompilerContext.getOption(IFernflowerPreferences.HIDE_RECORD_BODY)) {
+        buffer.setLength(buffer.length() - DecompilerContext.getNewLineSeparator().length());
+      }
+
       buffer.appendIndent(indent).append('}');
 
       if (node.type != ClassNode.CLASS_ANONYMOUS) {
@@ -860,7 +864,8 @@ public class ClassWriter {
 
             hideMethod = code.length() == 0 &&
               (clInit || dInit || hideConstructor(node, !typeAnnotations.isEmpty(), init, throwsExceptions, paramCount, flags)) ||
-              isSyntheticRecordMethod(cl, mt, code);
+              isSyntheticRecordMethod(cl, mt, code) ||
+              cl.getRecordComponents() != null && DecompilerContext.getOption(IFernflowerPreferences.HIDE_RECORD_BODY);
 
             buffer.append(code);
 
