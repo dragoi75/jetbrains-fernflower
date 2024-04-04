@@ -1,0 +1,4 @@
+package records;
+
+public record TestRecordAnnoNoBody(@RC @TA int x, int y) {}
+

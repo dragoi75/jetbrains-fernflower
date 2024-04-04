@@ -31,5 +31,14 @@ lines 39 and 88.
 ## Added tests
 To ensure that the changes made to the code work as expected, tests were added to the
 [RecordTest](./test/org/jetbrains/java/decompiler/RecordTest.java) class. All test originally found in `SimpleClassesTest`
-that included a `record` were duplicated and adapted to match the new expected outcome. Without the -hrb option,
-all original test pass.
+that included a `record` were duplicated and adapted to match the new expected outcome. All test named `testRecord*` were 
+adapted to match the new expected outcome. The new tests are named `testRecord*NoBody`. There are 4 other test that use 
+files that contain `record`, but unfortunately, I was unable to compile into bytecode. This might be due to
+the Java version I am using, or some other issues. I considered fixing this out of the scope of the task, but I would be
+happy to investigate further if needed.
+
+Without the -hrb option, all original test pass.
+
+I additionally wanted to test a record declared inside a class, but this is only supported in Java 16 and I believe
+FernFlower only supports up to Java 15. Even without my modification, the decompiled file is not correct 
+(i.e. is missing the nested record altogether).
